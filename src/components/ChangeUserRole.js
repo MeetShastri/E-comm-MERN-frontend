@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ROLE from '../common/role'
+import ROLE from '../common/role.js'
 import { IoMdClose } from "react-icons/io";
 import { toast } from 'react-toastify';
 

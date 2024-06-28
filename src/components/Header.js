@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { setUserDetails } from '../store/userSlice';
+import  ROLE  from '../common/role';
 
 const Header = () => {
     const user = useSelector((state) => state.user?.user)
@@ -44,17 +45,28 @@ const Header = () => {
 
             <div className='flex items-center gap-7 '>
                 <div className='relative  flex justify-center'>
-                <div className='text-3xl cursor-pointer' onClick={() => setMenuDisplay(!menuDisplay)}>
+                {
+                    user?._id && (
+                        <div className='text-3xl cursor-pointer' onClick={() => setMenuDisplay(!menuDisplay)}>
                 {
                     user?.profilePic ? <img src={user?.profilePic} alt={user?.name} className='w-12 h-12 rounded-full object-cover'/> : <FaRegCircleUser/>
                 }
                     
                 </div>
+                    )
+                }
+                
                 {
                     menuDisplay && (
                         <div className='absolute bg-white bottom-0 top-11 h-fit p-2 shadow-lg rounded '>
                     <nav>
-                        <Link to={'/adminpanel'} className='text-sm whitespace-nowrap hover:bg-slate-100 p-2 hidden md:block' onClick={() => setMenuDisplay(!menuDisplay)}>Admin Panel</Link>
+                    {
+                        user?.role === ROLE.ADMIN && (
+                            <Link to={'/adminpanel/allproducts'} className='text-sm whitespace-nowrap hover:bg-slate-100 p-2 hidden md:block' onClick={() => setMenuDisplay(!menuDisplay)}>Admin Panel</Link>
+                        )
+
+                    }
+                         
                     </nav>
                 </div>
                     )
