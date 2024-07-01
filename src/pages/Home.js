@@ -1,9 +1,12 @@
-import React from 'react'
+import BannerProduct from '../components/BannerProduct'
+import CategoryList from '../components/CategoryList'
 
 const Home = () => {
+
   return (
-    <div>
-      Home Page 
+    <div className=''>
+      <CategoryList/> 
+      <BannerProduct/>
     </div>
   )
 }

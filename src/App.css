@@ -10,3 +10,7 @@
 .userTable td{
   @apply border text-base
 }
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
